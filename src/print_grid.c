@@ -28,7 +28,10 @@ void print_grid(int grid[6][7]) {
         printf("  ║");
 
         for (int col = 0; col < 7; col++) {
-            printf(" %s%d" RESET " %s", disc_color(grid[row][col]), grid[row][col], col < 6 ? "│" : "║");
+            if (grid[row][col] != 0)
+                printf(" %s●" RESET " %s", disc_color(grid[row][col]), col < 6 ? "│" : "║");
+            else
+                printf("  " RESET " %s", col < 6 ? "│" : "║");
         }
 
         printf(RESET "\n");
@@ -40,5 +43,5 @@ void print_grid(int grid[6][7]) {
     print_border("╚", "═", "╧", "╝");
 
     // Legend
-    printf("\n  " RED "1" RESET " Player 1 (Red)    " YELLOW "2" RESET " Player 2 (Yellow)\n\n");
+    printf("\n  " RED "  ●" RESET " Player 1     " YELLOW "●" RESET " Player 2\n\n");
 }
